@@ -54,6 +54,7 @@ export function NavMain({
                                         tooltip={item.title}
                                         subMenu={item.items}
                                         url={url}
+                                        isActive={url.startsWith(item.url)}
                                     >
                                         {item.icon && <item.icon />}
                                         <span>{item.title}</span>

@@ -3,6 +3,8 @@ import { Head } from "@inertiajs/react";
 
 const title = "Categories";
 
+const breadcrumbMenu = [{ url: "/master/categories", title: "Categories" }];
+
 function Categories() {
     return (
         <>
@@ -16,7 +18,9 @@ function Categories() {
 
 // Tambahkan layout secara persistent
 Categories.layout = (page: React.ReactNode) => (
-    <AdminLayout header={title}>{page}</AdminLayout>
+    <AdminLayout header={title} breadcrumbMenu={breadcrumbMenu}>
+        {page}
+    </AdminLayout>
 );
 
 export default Categories;

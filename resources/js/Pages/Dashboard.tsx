@@ -4,6 +4,8 @@ import { Head } from "@inertiajs/react";
 
 const title = "Dashboard";
 
+const breadcrumbMenu = [{ url: "/dashboard", title: "Dashboard" }];
+
 function Dashboard() {
     return (
         <>
@@ -17,7 +19,9 @@ function Dashboard() {
 
 // Tambahkan layout secara persistent
 Dashboard.layout = (page: React.ReactNode) => (
-    <AdminLayout header={title}>{page}</AdminLayout>
+    <AdminLayout header={title} breadcrumbMenu={breadcrumbMenu}>
+        {page}
+    </AdminLayout>
 );
 
 export default Dashboard;
