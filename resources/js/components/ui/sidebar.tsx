@@ -31,7 +31,7 @@ const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
 const SIDEBAR_WIDTH = "16rem";
 const SIDEBAR_WIDTH_MOBILE = "18rem";
-const SIDEBAR_WIDTH_ICON = "3rem";
+const SIDEBAR_WIDTH_ICON = "4.5rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
 type SidebarContext = {
@@ -513,15 +513,38 @@ SidebarGroupContent.displayName = "SidebarGroupContent";
 
 const SidebarMenu = React.forwardRef<
     HTMLUListElement,
-    React.ComponentProps<"ul">
->(({ className, ...props }, ref) => (
-    <ul
-        ref={ref}
-        data-sidebar="menu"
-        className={cn("flex w-full min-w-0 flex-col gap-1", className)}
-        {...props}
-    />
-));
+    React.ComponentProps<"ul"> & { sidebar?: React.ReactNode }
+>(({ className, sidebar, ...props }, ref) => {
+    const { state } = useSidebar();
+
+    if (state === "collapsed") {
+        return (
+            <ul
+                ref={ref}
+                data-sidebar="menu"
+                className={cn(
+                    "flex w-full min-w-0 flex-col gap-1",
+                    "group-data-[state=collapsed]:items-center",
+                    className
+                )}
+            >
+                {sidebar}
+            </ul>
+        );
+    }
+    return (
+        <ul
+            ref={ref}
+            data-sidebar="menu"
+            className={cn(
+                "flex w-full min-w-0 flex-col gap-1",
+                "group-data-[state=collapsed]:items-center",
+                className
+            )}
+            {...props}
+        />
+    );
+});
 SidebarMenu.displayName = "SidebarMenu";
 
 const SidebarMenuItem = React.forwardRef<
