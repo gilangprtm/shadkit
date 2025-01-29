@@ -1,8 +1,8 @@
 export function SidebarHeaderContent() {
     return (
-        <div className="flex h-14 items-center justify-center">
+        <div className="flex items-center justify-center h-14">
             <svg
-                className="h-10 w-auto text-white lg:h-10 lg:text-[#FF2D20]"
+                className="h-10 w-auto text-[#FF2D20] lg:h-10 lg:text-[#FF2D20]"
                 viewBox="0 0 62 65"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
