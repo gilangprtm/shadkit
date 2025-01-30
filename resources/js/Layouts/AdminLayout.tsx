@@ -55,7 +55,7 @@ export default function AdminLayout({
                     breadcrumbMenu={breadcrumbMenu}
                 />
                 {/* content */}
-                <div className="flex flex-col flex-1 gap-4 p-4 pt-0 bg-muted">
+                <div className="flex flex-col flex-1 gap-4 p-4 pt-0 bg-muted-background">
                     {children}
                 </div>
             </SidebarInset>
