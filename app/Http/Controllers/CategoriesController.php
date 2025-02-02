@@ -12,6 +12,10 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        return Inertia::render('Categories/Index');
+        $tasks = json_decode(file_get_contents(resource_path('js/Pages/Categories/data/tasks.json')), true);
+
+        return Inertia::render('Categories/Index', [
+            'tasks' => $tasks
+        ]);
     }
 }
